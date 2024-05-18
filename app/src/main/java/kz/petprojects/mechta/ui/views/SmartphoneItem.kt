@@ -1,6 +1,8 @@
 package kz.petprojects.mechta.ui.views
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -19,7 +21,8 @@ fun SmartphoneItem(smartphone: Smartphone) {
             .padding(8.dp),
         elevation = CardDefaults.cardElevation(4.dp)
     ) {
-        Column(modifier = Modifier.padding(16.dp)) {
+        Column(modifier = Modifier.padding(8.dp)) {
+            PhotoCarousel(photos = smartphone.photos)
             Text(text = smartphone.name, style = MaterialTheme.typography.bodyLarge)
             Text(text = "Code: ${smartphone.code}", style = MaterialTheme.typography.bodySmall)
             Text(text = "Price: ${smartphone.price}", style = MaterialTheme.typography.bodySmall)

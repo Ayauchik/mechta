@@ -82,7 +82,9 @@ dependencies {
     implementation ("io.insert-koin:koin-androidx-compose:3.2.0")
 
     implementation("androidx.navigation:navigation-compose:2.4.0-alpha10")
+//    implementation("io.coil-kt:coil-compose:2.6.0")
     implementation("com.github.bumptech.glide:compose:1.0.0-beta01")
+  //  implementation("com.github.skydoves:landscapist-glide:1.6.3")
 
     implementation ("androidx.room:room-ktx:2.5.2")
     annotationProcessor ("androidx.room:room-compiler:2.5.2")
