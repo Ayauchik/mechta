@@ -12,6 +12,7 @@ import kotlinx.coroutines.launch
 import kz.petprojects.mechta.domain.model.getSmartphones.Smartphone
 import kz.petprojects.mechta.domain.use_cases.GetSmartphonesUseCase
 
+
 class SmartphoneScreenViewModel(
     private val getSmartphonesUseCase: GetSmartphonesUseCase
 ) : ViewModel() {
@@ -19,25 +20,38 @@ class SmartphoneScreenViewModel(
     private val _smartphonesList = MutableStateFlow<List<Smartphone>>(emptyList())
     val smartphone: MutableStateFlow<List<Smartphone>> = _smartphonesList
 
-
     private val _isLoading = mutableStateOf(true)
     val isLoading: State<Boolean> get() = _isLoading
+
+    private val _isLoadingMore = mutableStateOf(false)
+    val isLoadingMore: State<Boolean> get() = _isLoadingMore
+
+    private var currentPage = 1
 
     init {
         fetchData()
     }
 
-    private fun fetchData() {
+    private fun fetchData(page: Int = 1) {
         viewModelScope.launch {
             try {
-                //_smartphonesList.addAll(getSmartphonesUseCase.invoke())
-                _smartphonesList.value = getSmartphonesUseCase.invoke()
-                Log.e("viewmodel", _smartphonesList.toString())
+                if (page == 1) _isLoading.value = true else _isLoadingMore.value = true
+                val newSmartphones = getSmartphonesUseCase.invoke(page)
+                _smartphonesList.value += newSmartphones
                 _isLoading.value = false
+                _isLoadingMore.value = false
             } catch (e: Exception) {
                 Log.e("smartphone view model", e.message.toString())
-                _isLoading.value = true
+                _isLoading.value = false
+                _isLoadingMore.value = false
             }
+        }
+    }
+
+    fun loadMoreData() {
+        if (!_isLoadingMore.value) {
+            currentPage++
+            fetchData(currentPage)
         }
     }
 }
