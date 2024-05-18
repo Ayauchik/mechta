@@ -7,5 +7,5 @@ data class Smartphone(
     val price: Int,
     val bonus: Int,
     val photos: List<String>,
-    val isFavourite: Boolean
+    var isFavourite: Boolean
 )

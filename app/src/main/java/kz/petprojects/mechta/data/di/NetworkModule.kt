@@ -1,6 +1,8 @@
 package kz.petprojects.mechta.data.di
 
 import com.google.gson.GsonBuilder
+import kz.petprojects.mechta.Constants
+import kz.petprojects.mechta.R
 import kz.petprojects.mechta.data.network.api.PlaceholderService
 import kz.petprojects.mechta.data.network.response.getSmartphones.Stickers
 import kz.petprojects.mechta.data.network.response.getSmartphones.StickersDeserializer
@@ -30,7 +32,7 @@ val networkModule = module {
 
     factory<Retrofit> {// (baseUrl: String) ->
         Retrofit.Builder()
-            .baseUrl("https://www.mechta.kz/api/v2/")
+            .baseUrl(Constants.BASE_URL)
             .addConverterFactory(get())
             .client(get())
             .build()

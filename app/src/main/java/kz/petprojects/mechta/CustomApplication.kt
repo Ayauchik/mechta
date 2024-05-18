@@ -24,7 +24,7 @@ class CustomApplication : Application() {
 
         startKoin{
             androidContext(this@CustomApplication)
-            parametersOf("https://www.mechta.kz/api/v2/")
+            parametersOf(Constants.BASE_URL)
             modules(modulesToUse)
         }
     }

@@ -69,7 +69,7 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
 
 
-
+  //  implementation("androidx.compose.foundation:foundation:1.2.0")
     implementation("androidx.compose.ui:ui-text-google-fonts:1.6.5")
 
     implementation("com.squareup.retrofit2:retrofit:2.6.0")

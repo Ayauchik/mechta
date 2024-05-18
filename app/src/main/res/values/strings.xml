@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">mechta</string>
+    <string name="sectionSmartphones">Смартфоны</string>
 </resources>
