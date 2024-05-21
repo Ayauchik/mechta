@@ -19,13 +19,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import kotlinx.coroutines.launch
+import kz.petprojects.mechta.ui.navigation.Destinations
 import kz.petprojects.mechta.ui.views.SmartphoneItem
 import org.koin.androidx.compose.get
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun SmartphoneScreen(
+    navController: NavController,
     viewModel: SmartphoneScreenViewModel = get()
 ) {
     val isLoading by viewModel.isLoading
@@ -106,7 +109,11 @@ fun SmartphoneScreen(
                     // horizontalArrangement = Arrangement.spacedBy(2.dp)
                 ) {
                     itemsIndexed(smartphones) { index, smartphone ->
-                        SmartphoneItem(smartphone = smartphone)
+                        SmartphoneItem(smartphone = smartphone){
+                            navController.navigate(
+                                Destinations.SmartphoneDetails.createRoute(smartphone.code)
+                            )
+                        }
 
                         if (index == smartphones.size - 1 && !isLoadingMore) {
                             LaunchedEffect(Unit) {

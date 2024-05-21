@@ -42,7 +42,7 @@ data class Data(
     val same_products: SameProducts,
     val service: Boolean,
     val shops: List<Shop>,
-    val stickers: List<Any>,
+    val stickers: StickersForDetailed,
     val stream24: Stream24,
     val title: String,
     val type: Int,

@@ -7,6 +7,7 @@ import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -20,8 +21,12 @@ import androidx.compose.ui.unit.dp
 import kz.petprojects.mechta.domain.model.Smartphone
 import kz.petprojects.mechta.ui.theme.magentaDye
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SmartphoneItem(smartphone: Smartphone) {
+fun SmartphoneItem(
+    smartphone: Smartphone,
+    onClick: () -> Unit
+) {
     var isFavorite by remember { mutableStateOf(smartphone.isFavourite) }
 
     Card(
@@ -31,18 +36,19 @@ fun SmartphoneItem(smartphone: Smartphone) {
         elevation = CardDefaults.cardElevation(4.dp),
         colors = CardDefaults.cardColors(
             containerColor = Color.White
-        )
+        ),
+        onClick = onClick
     ) {
         Column(
             modifier = Modifier.padding(8.dp),
             verticalArrangement = Arrangement.spacedBy(8.dp)
-            ) {
+        ) {
             Box {
                 PhotoCarousel(photos = smartphone.photos)
                 Box(
                     modifier = Modifier
                         .fillMaxSize(),
-                        //.padding(8.dp),
+                    //.padding(8.dp),
                     contentAlignment = Alignment.TopEnd
                 ) {
                     FavoriteButton(
