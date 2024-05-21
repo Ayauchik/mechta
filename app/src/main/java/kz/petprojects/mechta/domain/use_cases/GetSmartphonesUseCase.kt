@@ -1,6 +1,6 @@
 package kz.petprojects.mechta.domain.use_cases
 
-import kz.petprojects.mechta.domain.model.getSmartphones.Smartphone
+import kz.petprojects.mechta.domain.model.Smartphone
 
 interface GetSmartphonesUseCase {
     suspend fun invoke(

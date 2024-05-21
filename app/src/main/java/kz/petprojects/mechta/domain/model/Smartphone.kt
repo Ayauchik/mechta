@@ -1,4 +1,4 @@
-package kz.petprojects.mechta.domain.model.getSmartphones
+package kz.petprojects.mechta.domain.model
 
 data class Smartphone(
     val id: Int,
@@ -7,5 +7,6 @@ data class Smartphone(
     val price: Int,
     val bonus: Int,
     val photos: List<String>,
-    var isFavourite: Boolean
+    var isFavourite: Boolean,
+    val inFavourites: Boolean // noted after
 )

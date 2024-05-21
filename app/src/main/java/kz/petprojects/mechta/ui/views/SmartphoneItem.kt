@@ -2,13 +2,9 @@ package kz.petprojects.mechta.ui.views
 
 import android.util.Log
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.text.BasicText
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
-import androidx.compose.material.icons.outlined.Favorite
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
@@ -21,7 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import kz.petprojects.mechta.domain.model.getSmartphones.Smartphone
+import kz.petprojects.mechta.domain.model.Smartphone
 import kz.petprojects.mechta.ui.theme.magentaDye
 
 @Composable
@@ -68,7 +64,6 @@ fun SmartphoneItem(smartphone: Smartphone) {
             Spacer(modifier = Modifier.size(4.dp))
             val formattedPrice = smartphone.price.toString().addSpacesBetweenGroupsOfThreeFromEnd()
             Text(text = formattedPrice, style = MaterialTheme.typography.displayLarge)
-         //   Text(text = "Bonus: ${smartphone.bonus}", style = MaterialTheme.typography.bodySmall)
         }
     }
 }

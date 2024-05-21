@@ -1,11 +1,10 @@
 package kz.petprojects.mechta.data.network.mapper.getSmartphones
 
 import kz.petprojects.mechta.data.network.response.getSmartphones.Item
-import kz.petprojects.mechta.domain.model.getSmartphones.Smartphone
+import kz.petprojects.mechta.domain.model.Smartphone
 
 class ItemMapper {
-
-    fun fromRemoteToDomain(item: Item): Smartphone{
+    fun fromRemoteToDomain(item: Item): Smartphone {
         return Smartphone(
             id = item.id,
             name = item.name,
@@ -13,7 +12,8 @@ class ItemMapper {
             price = item.price,
             bonus = item.bonus,
             photos = item.photos,
-            isFavourite = false
+            isFavourite = false,
+            inFavourites = item.in_favorites
         )
     }
 }

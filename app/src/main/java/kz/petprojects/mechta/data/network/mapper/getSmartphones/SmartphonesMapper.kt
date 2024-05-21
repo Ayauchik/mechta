@@ -1,7 +1,7 @@
 package kz.petprojects.mechta.data.network.mapper.getSmartphones
 
 import kz.petprojects.mechta.data.network.response.getSmartphones.GetSmartphonesResponse
-import kz.petprojects.mechta.domain.model.getSmartphones.Smartphone
+import kz.petprojects.mechta.domain.model.Smartphone
 
 class SmartphonesMapper(
     private val itemMapper: ItemMapper
