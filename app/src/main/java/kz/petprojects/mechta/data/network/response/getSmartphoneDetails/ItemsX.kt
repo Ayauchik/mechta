@@ -1,5 +1,8 @@
 package kz.petprojects.mechta.data.network.response.getSmartphoneDetails
 
+import com.google.gson.annotations.SerializedName
+
 data class ItemsX(
-    val `64 ГБ`: ГБ
+    @SerializedName("64 ГБ")
+    val gb: GB
 )

@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import kz.petprojects.mechta.ui.smartphone.SmartphoneScreen
+import kz.petprojects.mechta.ui.smartphoneDetails.SmartphoneDetailsScreen
 import kz.petprojects.mechta.ui.theme.MechtaTheme
 
 class MainActivity : ComponentActivity() {
@@ -23,7 +24,8 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    SmartphoneScreen()
+                  //  SmartphoneScreen()
+                    SmartphoneDetailsScreen(smartphoneCode = "telefon-sotovyy-samsung-sm-a-135-galaxy-a13-64gb-flbvs-blue")
                    // Greeting("Android")
                 }
             }

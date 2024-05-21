@@ -1,5 +1,8 @@
 package kz.petprojects.mechta.data.network.response.getSmartphoneDetails
 
+import com.google.gson.annotations.SerializedName
+
 data class Items(
-    val голубой: Голубой
+    @SerializedName("голубой")
+    val blue: Blue
 )

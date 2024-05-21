@@ -1,6 +1,6 @@
 package kz.petprojects.mechta.data.network.api
-import kz.petprojects.mechta.data.network.response.getSmartphones.GetSmartphonesResponse
 import kz.petprojects.mechta.data.network.response.getSmartphoneDetails.GetSmartphoneDetailsResponse
+import kz.petprojects.mechta.data.network.response.getSmartphones.GetSmartphonesResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -17,5 +17,4 @@ interface PlaceholderService {
     suspend fun getSmartphoneDetails(
         @Path("code") code: String
     ): GetSmartphoneDetailsResponse
-
 }
