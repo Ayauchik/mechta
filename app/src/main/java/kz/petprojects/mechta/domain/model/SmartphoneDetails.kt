@@ -8,5 +8,5 @@ data class SmartphoneDetails(
     val reviewsCount: Int,
     var inFavourites: Boolean,
    // val sameProductProperties: List<String>,
-    val mainProperties: List<Properties>
+    val mainProperties: List<Properties>,
 )

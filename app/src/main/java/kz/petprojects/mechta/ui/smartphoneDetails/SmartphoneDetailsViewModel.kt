@@ -15,8 +15,18 @@ class SmartphoneDetailsViewModel(
     private val getSmartphoneDetailsUseCase: GetSmartphoneDetailsUseCase
 ): ViewModel() {
 
-    private val _smartphoneDetails = MutableStateFlow<SmartphoneDetails?>(null)
-    val smartphoneDetails: StateFlow<SmartphoneDetails?> = _smartphoneDetails
+    private val _smartphoneDetails = MutableStateFlow<SmartphoneDetails>(
+        SmartphoneDetails(
+            code = "",
+            name = "",
+            photos = emptyList(),
+            rating = 0,
+            reviewsCount = 0,
+            inFavourites = false,
+            mainProperties = emptyList()
+        )
+    )
+    val smartphoneDetails: StateFlow<SmartphoneDetails> = _smartphoneDetails
 
     private val _isLoading = mutableStateOf(true)
     val isLoading: State<Boolean> get() = _isLoading

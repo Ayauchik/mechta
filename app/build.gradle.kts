@@ -69,7 +69,6 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
 
 
-  //  implementation("androidx.compose.foundation:foundation:1.2.0")
     implementation("androidx.compose.ui:ui-text-google-fonts:1.6.5")
 
     implementation("com.squareup.retrofit2:retrofit:2.6.0")
@@ -82,12 +81,12 @@ dependencies {
     implementation ("io.insert-koin:koin-androidx-compose:3.2.0")
 
     implementation("androidx.navigation:navigation-compose:2.4.0-alpha10")
-//    implementation("io.coil-kt:coil-compose:2.6.0")
     implementation("com.github.bumptech.glide:compose:1.0.0-beta01")
-  //  implementation("com.github.skydoves:landscapist-glide:1.6.3")
 
     implementation ("androidx.room:room-ktx:2.5.2")
     annotationProcessor ("androidx.room:room-compiler:2.5.2")
     kapt("androidx.room:room-compiler:2.5.2")
 
+
+    implementation("androidx.compose.material:material-icons-extended:1.5.4")
 }

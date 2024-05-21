@@ -53,9 +53,12 @@ fun MechtaApp() {
 
 
                 composable(Destinations.SmartphoneDetails.route) {
-                    val code =it.arguments?.getString(Destinations.SmartphoneDetails.codeArg)
+                    val code = it.arguments?.getString(Destinations.SmartphoneDetails.codeArg)
 
-                    SmartphoneDetailsScreen(smartphoneCode = code ?: " ")
+                    SmartphoneDetailsScreen(
+                        smartphoneCode = code ?: " ",
+                        navController = navController
+                    )
                 }
             }
         }

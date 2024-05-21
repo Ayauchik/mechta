@@ -1,6 +1,7 @@
 package kz.petprojects.mechta.ui.views
 
 import android.util.Log
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
@@ -44,7 +45,10 @@ fun SmartphoneItem(
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             Box {
-                PhotoCarousel(photos = smartphone.photos)
+                PhotoCarousel(
+                    photos = smartphone.photos,
+                    dotSize = 4.dp,
+                    modifier = Modifier.fillMaxWidth())
                 Box(
                     modifier = Modifier
                         .fillMaxSize(),
