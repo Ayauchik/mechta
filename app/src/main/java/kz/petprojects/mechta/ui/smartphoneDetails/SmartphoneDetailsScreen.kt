@@ -20,12 +20,15 @@ import kz.petprojects.mechta.ui.theme.backgroundColor
 import kz.petprojects.mechta.ui.views.FavoriteButton
 import kz.petprojects.mechta.ui.views.SmartphoneDetailsItem
 import org.koin.androidx.compose.get
+import java.net.URLDecoder
+import java.nio.charset.StandardCharsets
 
-@OptIn(ExperimentalGlideComposeApi::class, ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalGlideComposeApi::class)
 @Composable
 fun SmartphoneDetailsScreen(
     smartphoneCode: String,
-    navController: NavHostController,  // Pass NavController for navigation
+    firstUrl: String,
+    navController: NavHostController,
     viewModel: SmartphoneDetailsViewModel = get()
 ) {
     val isLoading by viewModel.isLoading
@@ -62,15 +65,25 @@ fun SmartphoneDetailsScreen(
         },
         modifier = Modifier.padding(end = 8.dp)
     ) { paddingValues ->
-        Box(modifier = Modifier
-            .fillMaxSize()
-            .padding(paddingValues)) {
+
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(paddingValues)
+        ) {
             if (isLoading) {
-                CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
+                val decodedUrl = URLDecoder.decode(firstUrl, StandardCharsets.UTF_8.toString())
+                GlideImage(
+                    model = decodedUrl,
+                    contentDescription = "first photo for animation"
+                )
+                CircularProgressIndicator(
+                    modifier = Modifier
+                        .padding(top = 180.dp)
+                        .align(Alignment.Center)
+                )
             } else {
-                smartphoneDetails?.let { details ->
-                   SmartphoneDetailsItem(details = details)
-                } 
+                SmartphoneDetailsItem(details = smartphoneDetails)
             }
         }
     }

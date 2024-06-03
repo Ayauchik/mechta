@@ -1,6 +1,9 @@
 package kz.petprojects.mechta.ui.views
 
 import android.util.Log
+import androidx.compose.animation.AnimatedContentScope
+import androidx.compose.animation.ExperimentalSharedTransitionApi
+import androidx.compose.animation.SharedTransitionLayout
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
@@ -18,15 +21,16 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import kz.petprojects.mechta.domain.model.Smartphone
 import kz.petprojects.mechta.ui.theme.magentaDye
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalSharedTransitionApi::class)
 @Composable
 fun SmartphoneItem(
     smartphone: Smartphone,
-    onClick: () -> Unit
+    onClick: (String, String) -> Unit
 ) {
     var isFavorite by remember { mutableStateOf(smartphone.isFavourite) }
 
@@ -38,7 +42,8 @@ fun SmartphoneItem(
         colors = CardDefaults.cardColors(
             containerColor = Color.White
         ),
-        onClick = onClick
+       // onClick = onClick
+        onClick = {onClick(smartphone.code, smartphone.photos[0])}
     ) {
         Column(
             modifier = Modifier.padding(8.dp),
@@ -49,10 +54,10 @@ fun SmartphoneItem(
                     photos = smartphone.photos,
                     dotSize = 4.dp,
                     modifier = Modifier.fillMaxWidth())
+
                 Box(
                     modifier = Modifier
                         .fillMaxSize(),
-                    //.padding(8.dp),
                     contentAlignment = Alignment.TopEnd
                 ) {
                     FavoriteButton(
@@ -77,6 +82,7 @@ fun SmartphoneItem(
         }
     }
 }
+
 
 @Composable
 fun FavoriteButton(

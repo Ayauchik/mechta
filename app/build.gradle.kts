@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    alias(libs.plugins.kotlin.serialization)
     id("kotlin-kapt")
 }
 
@@ -68,6 +69,9 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
+    implementation(libs.androidx.compose.animation)
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.kotlinx.serialization.json)
 
     implementation("androidx.compose.ui:ui-text-google-fonts:1.6.5")
 
@@ -80,7 +84,7 @@ dependencies {
     implementation("io.insert-koin:koin-android:3.2.0")
     implementation ("io.insert-koin:koin-androidx-compose:3.2.0")
 
-    implementation("androidx.navigation:navigation-compose:2.4.0-alpha10")
+    //implementation("androidx.navigation:navigation-compose:2.4.0-alpha10")
     implementation("com.github.bumptech.glide:compose:1.0.0-beta01")
 
     implementation ("androidx.room:room-ktx:2.5.2")

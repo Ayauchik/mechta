@@ -28,9 +28,10 @@ import com.bumptech.glide.integration.compose.GlideImage
 import kz.petprojects.mechta.domain.model.SmartphoneDetails
 
 
-@OptIn(ExperimentalGlideComposeApi::class)
 @Composable
-fun SmartphoneDetailsItem(details: SmartphoneDetails) {
+fun SmartphoneDetailsItem(
+    details: SmartphoneDetails) {
+
     LazyColumn(
         modifier = Modifier
             .padding(16.dp)
@@ -42,7 +43,7 @@ fun SmartphoneDetailsItem(details: SmartphoneDetails) {
                 photos = details.photos,
                 dotSize = 8.dp,
                 modifier = Modifier
-                    .fillMaxWidth()
+                    .fillMaxWidth(),
             )
         }
         item {
@@ -60,9 +61,6 @@ fun SmartphoneDetailsItem(details: SmartphoneDetails) {
                     style = MaterialTheme.typography.bodySmall
                 )
             }
-        }
-
-        item {
         }
 
         item {

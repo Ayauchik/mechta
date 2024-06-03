@@ -1,5 +1,8 @@
 package kz.petprojects.mechta.ui.views
 
+import androidx.compose.animation.AnimatedContentScope
+import androidx.compose.animation.ExperimentalSharedTransitionApi
+import androidx.compose.animation.SharedTransitionScope
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -23,7 +26,7 @@ import com.bumptech.glide.integration.compose.GlideImage
 import kz.petprojects.mechta.ui.theme.magentaDye
 import kotlin.math.absoluteValue
 
-@OptIn(ExperimentalFoundationApi::class, ExperimentalGlideComposeApi::class)
+@OptIn(ExperimentalFoundationApi::class, ExperimentalGlideComposeApi::class, ExperimentalSharedTransitionApi::class)
 @Composable
 fun PhotoCarousel(
     photos: List<String>,
@@ -34,7 +37,6 @@ fun PhotoCarousel(
 
     Column(
         modifier = modifier,
-       // horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Column(
             modifier = modifier.fillMaxSize(),
@@ -49,7 +51,6 @@ fun PhotoCarousel(
                 Card(
                     modifier = Modifier
                         .fillMaxSize()
-                        //.size(200.dp)
                         .graphicsLayer {
                             val pageOffset = (
                                     (pagerState.currentPage - page) + pagerState
