@@ -15,7 +15,7 @@ class SmartphoneDetailsViewModel(
     private val getSmartphoneDetailsUseCase: GetSmartphoneDetailsUseCase
 ): ViewModel() {
 
-    private val _smartphoneDetails = MutableStateFlow<SmartphoneDetails>(
+    private val _smartphoneDetails = MutableStateFlow(
         SmartphoneDetails(
             code = "",
             name = "",

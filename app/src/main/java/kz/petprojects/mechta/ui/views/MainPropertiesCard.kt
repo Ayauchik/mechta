@@ -10,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import kz.petprojects.mechta.domain.model.Properties
@@ -28,7 +29,6 @@ fun MainPropertiesCard(
             modifier = Modifier
                 .fillMaxWidth(),
             shape = RectangleShape
-
             ) {
             Column {
                 properties.forEachIndexed { index, property ->
@@ -50,7 +50,7 @@ fun PropertyRow(
     propValue: String,
     modifier: Modifier = Modifier,
     nameColumnWidth: Dp = 200.dp, // Adjust this value as needed
-    backgroundColor: Color
+    backgroundColor: Color,
 ) {
     Row(
         modifier = modifier
@@ -63,6 +63,7 @@ fun PropertyRow(
             text = "$propName:",
             style = MaterialTheme.typography.bodySmall,
             modifier = Modifier.width(nameColumnWidth)
+                .onSizeChanged { it.width }
         )
         Text(
             text = propValue,

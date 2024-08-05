@@ -5,10 +5,12 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import kz.petprojects.mechta.domain.model.Smartphone
 import kz.petprojects.mechta.domain.use_cases.GetSmartphonesUseCase
+
 
 class SmartphoneScreenViewModel(
     private val getSmartphonesUseCase: GetSmartphonesUseCase
@@ -31,12 +33,16 @@ class SmartphoneScreenViewModel(
     private val _filteredSmartphones = MutableStateFlow<List<Smartphone>>(emptyList())
     val filteredSmartphones: MutableStateFlow<List<Smartphone>> = _filteredSmartphones
 
+    var currentFetchJob: Job? = null
+
     init {
         fetchData()
     }
 
     private fun fetchData(page: Int = 1) {
-        viewModelScope.launch {
+        currentFetchJob?.cancel()
+
+        currentFetchJob = viewModelScope.launch {
             try {
                 if (page == 1) _isLoading.value = true else _isLoadingMore.value = true
                 val newSmartphones = getSmartphonesUseCase.invoke(page)
